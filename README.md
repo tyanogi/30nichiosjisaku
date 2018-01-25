@@ -15,7 +15,7 @@ naskという，NASMを筆者が拡張したものを使用している．
 |CMP a,b|Compareの略．aとbを比較する．|CMP AL,0|
 |JE|Jump if Equalの略．比較結果が等しければ指定したメモリ番地に飛ぶ．|JE fin|
 |INT|Interruptの略，ソフトウェアの割り込み命令|INT 0x13|
-|HLT|Haltの略．CPUを待機状態にする||HLT|
+|HLT|Haltの略．CPUを待機状態にする||
 
 ## x86レジスタ
 ### 種類
