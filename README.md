@@ -17,6 +17,16 @@ naskという，NASMを筆者が拡張したものを使用している．
 |JE|Jump if Equalの略．比較結果が等しければ指定したメモリ番地に飛ぶ．|JE fin|
 |INT|Interruptの略，ソフトウェアの割り込み命令|INT 0x13|
 |HLT|Haltの略．CPUを待機状態にする||
+|JC|Jump if carryの略．キャリーフラグ1ならジャンプする．|JC error|
+|JNC|Jump if not carryの略．キャリーフラグ0ならジャンプする．|JNC fin|
+|JAE|Jump above or equalの略．大きかもしくは等しければジャンプする．|JAE error|
+|JBE|Jump if below or equtalの略．小さいかもしくは等しければジャンプする．|JBE readloop|
+|JB|Jump if belowの略．小さければジャンプする．|JB readloop|
+|RET|Returnの略．関数の終了．C言語と連携したときはEAXの値を返す(p.92)．|RET|
+|OUT|指定した装置番号(port)へ電気信号を送る．|OUT DX,AL|
+|IN|指定した装置番号(port)から電気信号を受け取る．|IN AL,DX|
+|PUSHFD|Push flags double-wordの略．フラグをダブルワードでスタックに押し込む．|PUSHFD <br>= PUSH EFLAGS|
+|POPFD|Pop flags douvle-wordの略．フラグをダブルワードでスタックから飛ばす．|POPFD <br>= POP EFLAGS|
 
 ## x86レジスタ
 ### 種類
@@ -27,7 +37,7 @@ naskという，NASMを筆者が拡張したものを使用している．
 |32ビット|16ビット|8ビット|名称|用途|
 |:--:|:--:|:--:|:--:|:--:|
 |EAX|AX|AH，AL|アキュムレーターレジスタ|累積演算|
-|ECX|CX|BH，BL|カウンターレジスタ||
+|ECX|CX|CH，CL|カウンターレジスタ||
 |EDX|DX|DH，DL|データレジスタ||
 |EBX|BX|BH，BL|ベースレジスタ||
 |ESP|SP|分けられない|スタックポインタ||
@@ -55,4 +65,11 @@ naskという，NASMを筆者が拡張したものを使用している．
 ### p.42
 筆者が記したメモリマップのページがリンク切れしている．
 ##### 似たようなページ → <https://wiki.osdev.org/Memory_Map_(x86)>
+### p.70
+C言語と連携するときはEAX，ECX，EDXの3つのみ自由に使用して良い．他は読み込みは大丈夫だが書き込みはダメ．
+### p.70
+ESP+4に１番目の引数，ESP+8に２番目の引数が入っている．
+### p.88
+リンク切れしている．
+##### 似たようなページ → <https://wiki.osdev.org/VGA_Hardware#VGA_Registers>
 
